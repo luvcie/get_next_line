@@ -6,7 +6,7 @@
 /*   By: lucpardo <lucpardo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 12:58:46 by lucpardo          #+#    #+#             */
-/*   Updated: 2025/06/03 21:21:35 by lucpardo         ###   ########.fr       */
+/*   Updated: 2025/06/03 21:26:23 by lucpardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -47,7 +47,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	while (!ft_strchr(buffer, '\n'))
+	while (!buffer || !ft_strchr(buffer, '\n'))
 	{
 		bytes_read = read(fd, local_read_buffer, BUFFER_SIZE);
 		if (bytes_read <= 0)
