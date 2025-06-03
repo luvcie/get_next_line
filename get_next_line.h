@@ -6,7 +6,7 @@
 /*   By: lucpardo <lucpardo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 10:25:13 by lucpardo          #+#    #+#             */
-/*   Updated: 2025/06/03 10:26:35 by lucpardo         ###   ########.fr       */
+/*   Updated: 2025/06/03 18:59:11 by lucpardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,8 @@
 #endif
 
 char *get_next_line(int fd);
+size_t	ft_strlen(const char *s);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strjoin_free(char *s1, const char *s2);
 
 #endif
