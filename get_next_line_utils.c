@@ -6,7 +6,7 @@
 /*   By: lucpardo <lucpardo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 12:51:37 by lucpardo          #+#    #+#             */
-/*   Updated: 2025/06/03 20:35:11 by lucpardo         ###   ########.fr       */
+/*   Updated: 2025/06/03 20:50:59 by lucpardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -70,4 +70,32 @@ char	*ft_gnl_substr(char const *str, unsigned int start, size_t len)
 		i++;
 	ptr[i] = '\0';
 	return (ptr);
+}
+
+char	*ft_gnl_strjoin(char *s1, char const *s2)
+{
+	char	*str;
+	size_t	s1_len;
+	size_t	s2_len;
+	size_t	i;
+
+	if (s2 == NULL)
+		return (s1);
+	s1_len = 0;
+	if (s1)
+		s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	str = malloc(s1_len + s2_len + 1);
+	if (str == NULL)
+		return (free(s1), NULL);
+	i = 0;
+	while (s1 && s1[i])
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	while (*s2)
+		str[i++] = *s2++;
+	str[i] = '\0';
+	return (free(s1), str);
 }
