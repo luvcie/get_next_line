@@ -6,7 +6,7 @@
 /*   By: lucpardo <lucpardo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 12:58:46 by lucpardo          #+#    #+#             */
-/*   Updated: 2025/06/03 21:26:23 by lucpardo         ###   ########.fr       */
+/*   Updated: 2025/06/03 22:26:49 by lucpardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -39,27 +39,43 @@ static char	*ft_extract_line(char **buffer)
 	return (line);
 }
 
+static	char	*ft_freer(char **line_buffer, char *fd_buffer, char *result)
+{
+	if (line_buffer && *line_buffer)
+	{
+		free(*line_buffer);
+		*line_buffer = NULL;
+	}
+	if (fd_buffer)
+		free(fd_buffer);
+	return (result);
+}
+
 char	*get_next_line(int fd)
 {
 	int			bytes_read;
-	char		local_read_buffer[BUFFER_SIZE + 1];
-	static char	*buffer;
+	char		*fd_buffer;
+	static char	*line_buffer;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	while (!buffer || !ft_strchr(buffer, '\n'))
+	fd_buffer = malloc(BUFFER_SIZE + 1);
+	if (fd_buffer == NULL)
+		return (NULL);
+	while (!line_buffer || !ft_strchr(line_buffer, '\n'))
 	{
-		bytes_read = read(fd, local_read_buffer, BUFFER_SIZE);
+		bytes_read = read(fd, fd_buffer, BUFFER_SIZE);
 		if (bytes_read <= 0)
 		{
 			if (bytes_read < 0)
-				return (free(buffer), buffer = NULL, NULL);
+				return (ft_freer(&line_buffer, fd_buffer, NULL));
 			break ;
 		}
-		local_read_buffer[bytes_read] = '\0';
-		buffer = ft_gnl_strjoin(buffer, local_read_buffer);
-		if (buffer == NULL)
-			return (NULL);
+		fd_buffer[bytes_read] = '\0';
+		line_buffer = ft_gnl_strjoin(line_buffer, fd_buffer);
+		if (line_buffer == NULL)
+			return (ft_freer(NULL, fd_buffer, NULL));
 	}
-	return (ft_extract_line(&buffer));
+	free(fd_buffer);
+	return (ft_extract_line(&line_buffer));
 }
