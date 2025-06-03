@@ -6,7 +6,7 @@
 /*   By: lucpardo <lucpardo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 12:58:46 by lucpardo          #+#    #+#             */
-/*   Updated: 2025/06/03 20:03:10 by lucpardo         ###   ########.fr       */
+/*   Updated: 2025/06/03 20:04:34 by lucpardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -18,7 +18,7 @@ static char	*ft_extract_line(char **buffer)
 	char	*temp;
 	int		len;
 
-	if (**buffer == '\0' || *buffer == NULL)
+	if (*buffer == NULL || **buffer == '\0')
 		return (free_and_zero(buffer));
 	newline_i = ft_strchr(*buffer, '\n');
 	if (newline_i)
