@@ -6,7 +6,7 @@
 /*   By: lucpardo <lucpardo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 12:58:46 by lucpardo          #+#    #+#             */
-/*   Updated: 2025/06/03 20:33:22 by lucpardo         ###   ########.fr       */
+/*   Updated: 2025/06/03 21:08:50 by lucpardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -57,7 +57,7 @@ char	*get_next_line(int fd)
 			break ;
 		}
 		local_read_buffer[bytes_read] = '\0';
-		buffer = ft_strjoin_gnl(buffer, local_read_buffer);
+		buffer = ft_gnl_strjoin(buffer, local_read_buffer);
 		if (buffer == NULL)
 			return (NULL);
 	}
