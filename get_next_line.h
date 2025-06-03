@@ -6,7 +6,7 @@
 /*   By: lucpardo <lucpardo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 10:25:13 by lucpardo          #+#    #+#             */
-/*   Updated: 2025/06/03 18:59:11 by lucpardo         ###   ########.fr       */
+/*   Updated: 2025/06/03 21:18:01 by lucpardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 36
-#endif
+# endif
 
-char *get_next_line(int fd);
-size_t	ft_strlen(const char *s);
-char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin_free(char *s1, const char *s2);
+char	*get_next_line(int fd);
+size_t	ft_strlen(const char *str);
+char	*ft_strchr(const char *str, int c);
+char	*ft_gnl_substr(char const *str, unsigned int start, size_t len);
+char	*ft_gnl_strjoin(char *s1, char const *s2);
+void	*ft_free_and_zero(char **ptr);
 
 #endif
