@@ -6,9 +6,19 @@
 /*   By: lucpardo <lucpardo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 12:51:37 by lucpardo          #+#    #+#             */
-/*   Updated: 2025/06/03 12:51:59 by lucpardo         ###   ########.fr       */
+/*   Updated: 2025/06/03 20:13:50 by lucpardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
 
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
 
+	i = 0;
+while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
