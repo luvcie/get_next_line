@@ -13,6 +13,15 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include "libft.h"
+# include <stdlib.h>
+# include <unistd.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 777
+#endif
+
+# define MAX_FD 1024
+
+char *get_next_line(int fd);
 
 #endif
