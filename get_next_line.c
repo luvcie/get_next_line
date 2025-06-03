@@ -6,7 +6,7 @@
 /*   By: lucpardo <lucpardo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 12:58:46 by lucpardo          #+#    #+#             */
-/*   Updated: 2025/06/03 21:08:50 by lucpardo         ###   ########.fr       */
+/*   Updated: 2025/06/03 21:21:35 by lucpardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -19,7 +19,7 @@ static char	*ft_extract_line(char **buffer)
 	int		len;
 
 	if (*buffer == NULL || **buffer == '\0')
-		return (free_and_zero(buffer));
+		return (ft_free_and_zero(buffer));
 	newline_i = ft_strchr(*buffer, '\n');
 	if (newline_i)
 		len = newline_i - *buffer + 1;
@@ -27,7 +27,7 @@ static char	*ft_extract_line(char **buffer)
 		len = ft_strlen(*buffer);
 	line = ft_gnl_substr(*buffer, 0, len);
 	if (line == NULL)
-		return (free_and_zero(buffer));
+		return (ft_free_and_zero(buffer));
 	if (newline_i && *(newline_i + 1))
 	{
 		temp = ft_gnl_substr(*buffer, len, ft_strlen(*buffer) - len);
@@ -61,5 +61,5 @@ char	*get_next_line(int fd)
 		if (buffer == NULL)
 			return (NULL);
 	}
-	return (extract_line(&buffer));
+	return (ft_extract_line(&buffer));
 }
